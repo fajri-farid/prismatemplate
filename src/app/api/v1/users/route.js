@@ -4,13 +4,25 @@ import { NextResponse } from "next/server";
 export async function GET(req) {
   const searchParams = req.nextUrl.searchParams;
   const bio = searchParams.get("bio");
+  const ageQuery = searchParams.get("age"); //string
+  const age = Number(ageQuery); // number
+
   //   console.log(bio);
 
   // logic get by bio
-  if (bio) {
+  if (bio || age) {
     const allUser = await prisma.users.findMany({
       where: {
-        bio,
+        OR: [
+          {
+            bio: {
+              contains: bio,
+            },
+          },
+          {
+            age,
+          },
+        ],
       },
     });
     return NextResponse.json({

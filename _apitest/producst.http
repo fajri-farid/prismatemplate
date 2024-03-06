@@ -1,0 +1,2 @@
+### get price by min and max price
+GET http://localhost:3000/api/v1/products?minP=5&maxP=12

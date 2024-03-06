@@ -2,13 +2,26 @@
 POST http://localhost:3000/api/v1/users
 
 {
-    "name": "fajri",
-    "email": "fajrijry@gmail.com",
-    "password": "123456"
+    "name":"tanaka",
+    "email": "tanaka@gmail.com",
+    "password": "hello"
 }
 
 ### Get All Users
 GET http://localhost:3000/api/v1/users
 
 ### Get All Users by Bio
-GET http://localhost:3000/api/v1/users?bio=developer
+GET http://localhost:3000/api/v1/users?bio=data
+
+### Get Single User by id
+GET http://localhost:3000/api/v1/users/cltax4fdi0000taibfm6cjryd
+
+### Update User Data
+PATCH http://localhost:3000/api/v1/users/cltax4fdi0000taibfm6cjryd
+
+{
+    "name": "fajri"
+}
+
+### Delete User
+DELETE http://localhost:3000/api/v1/users/cltfngqhm0000dir3r2csj181

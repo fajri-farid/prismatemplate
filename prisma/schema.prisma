@@ -16,6 +16,7 @@ model Users {
   email String
   password String
   bio String? //optional dengan tanda '?'
+  age Int?
 
   // declaration : user punya banyak POST 
   posts Posts[]
@@ -34,3 +35,9 @@ model Posts {
   author Users @relation(fields: [author_id], references: [id])
 }
 
+model Products {
+  id String @id @default(cuid())
+  name String
+  description String
+  price Int
+}
