@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+ 
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Users {
+  id String @id @default(cuid())
+  name String 
+  email String
+  password String
+  bio String? //optional dengan tanda '?'
+
+  // declaration : user punya banyak POST 
+  posts Posts[]
+}
+
+model Posts {
+  id String @id @default(cuid())
+  title String
+  content String
+  featuredImage String
+
+  // connecting: menghubungkan author_id yang ada di Posts dengan id yang ada di Users
+  // declaration: Author ID = kolom untuk relasi
+  // referensi: mengacu pada tabel tujuan dan kolom tujuan
+  author_id String
+  author Users @relation(fields: [author_id], references: [id])
+}
+
